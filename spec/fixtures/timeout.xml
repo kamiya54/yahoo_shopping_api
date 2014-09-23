@@ -1,0 +1,1 @@
+<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<Error>\n<Message>\nPlease provide valid credentials. Bearer realm=\"yahooapis.jp\", error=\"invalid_token\", error_description=\"expired token\"\n</Message>\n</Error>
