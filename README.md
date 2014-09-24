@@ -1,5 +1,7 @@
 # YahooShoppingApi
 
+[![Build Status](https://travis-ci.org/kamiya54/yahoo_shopping_api.svg)](https://travis-ci.org/kamiya54/yahoo_shopping_api)
+
 TODO: Write a gem description
 
 ## Installation
