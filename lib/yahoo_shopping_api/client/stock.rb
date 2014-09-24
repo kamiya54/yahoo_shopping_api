@@ -1,28 +1,22 @@
 require 'faraday'
 module YahooShoppingApi
   module Client
-    class Stock
-      attr_accessor :access_token, :seller_id
-      Endpoint = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/"
-
+    class Stock < Helper
       def initialize(args)
-        @access_token = args[:access_token]
-        @seller_id = args[:seller_id]
+        super
       end
 
       def get(item_code)
-        request = connection("get").post {|req| req.body = "seller_id=#{seller_id}&item_code=#{item_code}"}
-        return ::YSA::Response::Stock::Get.new(request)
+        Response::Stock::Get.new(conn.post {|req| req.body = body(item_code)})
       end
 
-      def set(item_code, quantity)
-        request = connection("set").post {|req| req.body = "seller_id=#{seller_id}&item_code=#{item_code}&quantity=#{quantity}"}
-        return ::YSA::Response::Stock::Set.new(request)
+      def set(args={})
+        Response::Stock::Set.new(conn.post {|req| req.body = body(args)})
       end
 
       private
-      def connection(method)
-        connection = Faraday.new(:url => Endpoint + method.to_s + "Stock") do |c|
+      def conn
+        connection = Faraday.new(:url => Endpoint + caller[0][/`([^']*)'/, 1] + 'Stock') do |c|
           c.adapter Faraday.default_adapter
           c.headers['Authorization'] = "Bearer " + access_token
         end

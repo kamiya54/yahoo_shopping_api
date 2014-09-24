@@ -3,6 +3,15 @@ require 'spec_helper'
 
 describe YahooShoppingApi::Client::Item do
   let(:client) {described_class.new(:seller_id => 'store', :access_token => 'dummy_access_token')}
+  describe "initialize" do
+    it "should have a seller_id" do
+      expect(client.seller_id).to eq "store"
+    end
+
+    it "should have an access token" do
+      expect(client.access_token).to eq "dummy_access_token"
+    end
+  end
 
   describe "#edit" do
     let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/editItem"}
