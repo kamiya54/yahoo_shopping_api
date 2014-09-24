@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = YahooShoppingApi::VERSION
   spec.authors       = ["kamiya54"]
   spec.email         = ["kamiya54@gmail.com"]
-  spec.summary       = %q{Ruby wrapper for RMS Web Service.}
-  spec.description   = %q{Ruby wrapper for RMS Web Service.}
+  spec.summary       = %q{Ruby wrapper for Yahoo Shopping API.}
+  spec.description   = %q{Ruby wrapper for Yahoo Shopping API.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
