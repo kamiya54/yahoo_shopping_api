@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResultSet><Result><Status>OK</Status><Warning><Target>additional1</Target><Code>it-00001</Code><Message>外部リンクを削除しました。</Message></Warning><Warning><Target>additional1</Target><Code>it-00002</Code><Message>商品説明はタグ閉じされていません。</Message></Warning></Result></ResultSet>

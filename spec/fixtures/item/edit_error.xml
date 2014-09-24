@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResultSet><Result><Status>NG</Status><Error><Target>path</Target><Code>it-01001</Code><Message>パスは最大8階層です。</Message></Error><Error><Target>path</Target><Code>it-01002</Code><Message>パスは全角20文字（半角40文字）以内で入力してください。</Message></Error><Warning><Target>additional1</Target><Code>it-00001</Code><Message>外部リンクを削除しました。</Message></Warning></Result></ResultSet>

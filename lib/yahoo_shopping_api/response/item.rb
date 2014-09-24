@@ -1,0 +1,5 @@
+require 'yahoo_shopping_api/response/item/parser'
+require 'yahoo_shopping_api/response/item/edit'
+require 'yahoo_shopping_api/response/item/get'
+require 'yahoo_shopping_api/response/item/delete'
+require 'yahoo_shopping_api/response/item/submit'

@@ -3,6 +3,8 @@ module YahooShoppingApi
   module Client
     class Stock
       attr_accessor :access_token, :seller_id
+      Endpoint = "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/"
+
       def initialize(args)
         @access_token = args[:access_token]
         @seller_id = args[:seller_id]
@@ -20,7 +22,7 @@ module YahooShoppingApi
 
       private
       def connection(method)
-        connection = Faraday.new(:url => "https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/#{method}Stock") do |c|
+        connection = Faraday.new(:url => Endpoint + method.to_s + "Stock") do |c|
           c.adapter Faraday.default_adapter
           c.headers['Authorization'] = "Bearer " + access_token
         end
