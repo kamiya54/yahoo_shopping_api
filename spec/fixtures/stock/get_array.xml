@@ -1,0 +1,36 @@
+<ResultSet totalResultsAvailable="2" totalResultsReturned="2" firstResultPosition="1" ok="1" ng="1">
+    <Result>
+        <ItemCode>
+            item-01
+        </ItemCode>
+        <SubCode>
+            sub-01
+        </SubCode>
+        <Status>
+            1
+        </Status>
+        <Quantity>
+            10
+        </Quantity>
+        <AllowOverdraft>
+            0
+        </AllowOverdraft>
+        <IsPublished>
+            1
+        </IsPublished>
+        <UpdateTime>
+            2013-03-09T12:34:56+09:00
+        </UpdateTime>
+    </Result>
+    <Result>
+        <ItemCode>
+            item-01
+        </ItemCode>
+        <SubCode>
+            sub-02
+        </SubCode>
+        <Status>
+            0
+        </Status>
+    </Result>
+</ResultSet>

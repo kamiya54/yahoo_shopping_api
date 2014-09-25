@@ -7,11 +7,15 @@ module YahooShoppingApi
       end
 
       def get(item_code)
-        Response::Stock::Get.new(conn.post {|req| req.body = body(item_code)})
+        request = conn.post {|req| req.body = body(item_code)}
+        raise AuthError if request.status == 401
+        Response::Stock::Get.new(request.body)
       end
 
       def set(args={})
-        Response::Stock::Set.new(conn.post {|req| req.body = body(args)})
+        request = conn.post {|req| req.body = body(args)}
+        raise AuthError if request.status == 401
+        Response::Stock::Set.new(request.body)
       end
 
       private

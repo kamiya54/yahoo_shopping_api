@@ -6,19 +6,27 @@ module YahooShoppingApi
       end
 
       def get(item_code)
-        Response::Item::Get.new(conn.post {|req| req.body = body(item_code)})
+        request = conn.post {|req| req.body = body(item_code)}
+        raise AuthError if request.status == 401
+        Response::Item::Get.new(request.body)
       end
   
       def edit(args={})
-        Response::Item::Edit.new(conn.post {|req| req.body = body(args)})
+        request = conn.post {|req| req.body = body(args)}
+        raise AuthError if request.status == 401
+        Response::Item::Edit.new(request.body)
       end
   
       def delete(item_code)
-        Response::Item::Delete.new(conn.post {|req| req.body = body(item_code)})
+        request = conn.post {|req| req.body = body(item_code)}
+        raise AuthError if request.status == 401
+        Response::Item::Delete.new(request.body)
       end
   
       def submit(item_code)
-        Response::Item::Submit.new(conn.post {|req| req.body = body(item_code)})
+        request = conn.post {|req| req.body = body(item_code)}
+        raise AuthError if request.status == 401
+        Response::Item::Submit.new(request.body)
       end
 
       private

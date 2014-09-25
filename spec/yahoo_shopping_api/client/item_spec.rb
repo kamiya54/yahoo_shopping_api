@@ -13,6 +13,14 @@ describe YahooShoppingApi::Client::Item do
     end
   end
 
+  context 'access token is invalid' do
+    let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/editItem"}
+    before {stub_request(:post, endpoint).to_return(:status => 401, body: fixture('timeout.xml'))}
+    it "" do
+      expect {client.edit({:item_code => "item_code", :item_price => 19800})}.to raise_error ::YSA::AuthError
+    end
+  end
+
   describe "#edit" do
     let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/editItem"}
     before {stub_request(:post, endpoint).to_return(:status => 200, body: fixture('item/edit_success.xml'))}

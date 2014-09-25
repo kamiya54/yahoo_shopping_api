@@ -1,28 +1,20 @@
 require 'spec_helper'
 
 describe YSA::Response::Stock::Get do
-  describe 'initialize' do
-    context 'with invalid arguments' do
-      it "" do
-        expect{YSA::Response::Stock::Get.new({})}.to raise_error ArgumentError
-      end
-    end
-  end
-
-  let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getStock"}
-  let(:connection) {Faraday.new(:url => endpoint)}
-
-  context 'access success' do
-    before {stub_request(:post, endpoint).to_return(:status => 200, body: fixture('stock/get.xml'))}
-    subject {described_class.new(connection.post)}
+  context 'an item' do
+    subject {described_class.new(fixture('stock/get.xml').read)}
+    it {is_expected.to be_a described_class}
     it {is_expected.to respond_to(:item_code)}
     it {is_expected.to respond_to(:quantity)}
   end
 
-  context 'session timeout' do
-    before {stub_request(:post, endpoint).to_return(:status => 401, body: fixture('timeout.xml'))}
-    it "" do
-      expect{described_class.new(connection.post)}.to raise_error ::YSA::AuthError
+  context 'items' do
+    subject {described_class.new(fixture('stock/get_array.xml').read)}
+    it "should be an Array of Response::Stock::Get" do
+      pending
+      expect(subject).to be_a Array
+      expect(subject[0]).to be_a described_class
+      expect(subject[0]).to respond_to(:item_code)
     end
   end
 end

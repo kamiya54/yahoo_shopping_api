@@ -2,7 +2,7 @@ module YahooShoppingApi
   module Response
     module Stock
       class Set < Parser
-        def initialize(response)
+        def initialize(xml)
           super
         end
       end
