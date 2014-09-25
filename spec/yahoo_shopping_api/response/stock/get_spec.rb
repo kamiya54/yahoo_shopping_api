@@ -10,10 +10,9 @@ describe YSA::Response::Stock::Get do
 
   context 'items' do
     subject {described_class.new(fixture('stock/get_array.xml').read)}
-    it "should be an Array of Response::Stock::Get" do
-      pending
+    it "should be an Array of Response::Result" do
       expect(subject).to be_a Array
-      expect(subject[0]).to be_a described_class
+      expect(subject).to respond_to(:each)
       expect(subject[0]).to respond_to(:item_code)
     end
   end

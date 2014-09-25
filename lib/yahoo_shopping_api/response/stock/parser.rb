@@ -1,16 +1,21 @@
 module YahooShoppingApi
   module Response
     module Stock
-      class Parser
+      class Parser < Array
         def initialize(xml)
           raise ArgumentError, "Argument is must be a XML Document." unless xml.class == String
-          parsed_xml = XmlSimple.xml_in(xml)
-          parsed_xml["Result"].each do |item|
-            item.each do |key, value|
-              self.define_singleton_method(key.underscore) {value[0]}
-            end
+          json = XmlSimple.xml_in(xml)
+
+          json.each do |key, value|
+            next if key == "Result"
+            self.define_singleton_method(key.underscore) {value[0]}
           end
-          return self
+
+          if json["Result"].size == 1
+            json["Result"][0].each {|key, value| define_singleton_method(key.underscore) {value[0]}}
+          else
+            json["Result"].each {|item| self << Result.new(item)}
+          end
         end
       end
     end
