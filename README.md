@@ -4,7 +4,7 @@
 
 [![Coverage Status](https://coveralls.io/repos/kamiya54/yahoo_shopping_api/badge.png)](https://coveralls.io/r/kamiya54/yahoo_shopping_api)
 
-TODO: Write a gem description
+Yahoo!ショッピングのWebAPI用のRubyラッパーgemです。
 
 ## Installation
 
@@ -24,7 +24,29 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+アクセストークンとセラーIDを渡してクライアントインスタンスを作成します。
+このインスタンスが`#get`や`#set`といったAPIの各メソッドを所持しています。
+
+```ruby
+client = YahooShoppingApi::Client::Stock.new(access_token: 'access_token', seller_id: 'seller_id')
+```
+
+## 対応状況
+
+* 在庫に関連するAPI (Stock)
+    * :white_check_mark: 在庫参照API (get)
+    * :white_check_mark: 在庫更新API (set)
+    * :white_large_square: 在庫アップロードAPI
+* 商品に関連するAPI (Item)
+    * :white_check_mark: 商品登録API (edit)
+    * :white_large_square: 商品一括更新API
+    * :white_large_square: 商品移動API
+    * :white_large_square: 商品表示順序変更API
+    * :white_check_mark: 商品参照API (get)
+    * :white_check_mark: 商品削除API (delete)
+    * :white_check_mark: 商品個別反映API (submit)
+    * :white_large_square: 商品リストAPI
+    * :white_large_square: 商品アップロードAPI
 
 ## Contributing
 
