@@ -8,7 +8,7 @@ module YahooShoppingApi
         @access_token = args[:access_token]
         @seller_id = args[:seller_id]
       end
-  
+
       def request_body(args)
         if args.class == Hash
           str = "seller_id=#{seller_id}&"

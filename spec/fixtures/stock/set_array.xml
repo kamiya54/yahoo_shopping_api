@@ -1,0 +1,4 @@
+<ResultSet totalResultsAvailable="2" totalResultsReturned="2" firstResultPosition="2">
+<Result><ItemCode>item_01</ItemCode><SubCode>sub_01</SubCode><Quantity>11</Quantity></Result>
+<Result><ItemCode>item_02</ItemCode><SubCode>sub_01</SubCode><Quantity>1</Quantity></Result>
+</ResultSet>
