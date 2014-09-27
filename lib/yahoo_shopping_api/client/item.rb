@@ -5,36 +5,20 @@ module YahooShoppingApi
         super
       end
 
-      def get(item_code)
-        request = conn.post {|req| req.body = request_body(item_code)}
-        raise AuthError if request.status == 401
-        Response::Item::Get.new(request.body)
+      def get(args)
+        Response::Item::Get.new post('getItem', args)
       end
   
-      def edit(args={})
-        request = conn.post {|req| req.body = request_body(args)}
-        raise AuthError if request.status == 401
-        Response::Item::Edit.new(request.body)
+      def edit(args)
+        Response::Item::Edit.new post('editItem', args)
       end
   
-      def delete(item_code)
-        request = conn.post {|req| req.body = request_body(item_code)}
-        raise AuthError if request.status == 401
-        Response::Item::Delete.new(request.body)
+      def delete(args)
+        Response::Item::Delete.new post('deleteItem', args)
       end
   
-      def submit(item_code)
-        request = conn.post {|req| req.body = request_body(item_code)}
-        raise AuthError if request.status == 401
-        Response::Item::Submit.new(request.body)
-      end
-
-      private
-      def conn
-        connection = Faraday.new(:url => Endpoint + caller[0][/`([^']*)'/, 1] + 'Item') do |c|
-          c.adapter Faraday.default_adapter
-          c.headers['Authorization'] = "Bearer " + access_token
-        end
+      def submit(args)
+        Response::Item::Submit.new post('submitItem', args)
       end
     end
   end

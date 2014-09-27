@@ -48,22 +48,4 @@ describe YahooShoppingApi::Client::Stock do
       end
     end
   end
-
-  describe '#set_request_body' do
-    let(:seller_id) {"dummy_seller_id"}
-    let(:access_token) {"dummy_access_token"}
-    let(:client) {described_class.new({seller_id: seller_id, access_token: access_token})}
-
-    context 'with one item' do
-      let(:param){[{item_code: 'test01', quantity: 10}]}
-      subject {client.set_request_body(param)}
-      it {is_expected.to eq "seller_id=#{seller_id}&item_code=test01&quantity=10"}
-    end
-
-    context 'with multiple items' do
-      let(:param){[{item_code: 'test02', quantity: 10}, {item_code: 'test03', quantity: 5}]}
-      subject {client.set_request_body(param)}
-      it {is_expected.to eq "seller_id=#{seller_id}&item_code=test02,test03&quantity=10,5"}
-    end
-  end
 end
