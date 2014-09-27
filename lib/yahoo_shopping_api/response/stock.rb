@@ -1,4 +1,9 @@
-require 'yahoo_shopping_api/response/stock/result'
-require 'yahoo_shopping_api/response/stock/parser'
-require 'yahoo_shopping_api/response/stock/get'
-require 'yahoo_shopping_api/response/stock/set'
+module YahooShoppingApi
+  module Response
+    class Stock < Parser
+      def initialize(xml)
+        super
+      end
+    end
+  end
+end

@@ -1,5 +1,9 @@
-require 'yahoo_shopping_api/response/item/parser'
-require 'yahoo_shopping_api/response/item/edit'
-require 'yahoo_shopping_api/response/item/get'
-require 'yahoo_shopping_api/response/item/delete'
-require 'yahoo_shopping_api/response/item/submit'
+module YahooShoppingApi
+  module Response
+    class Item < Parser
+      def initialize(xml)
+        super
+      end
+    end
+  end
+end

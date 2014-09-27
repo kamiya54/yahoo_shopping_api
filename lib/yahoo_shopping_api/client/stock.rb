@@ -8,11 +8,11 @@ module YahooShoppingApi
       end
 
       def get(args)
-        Response::Stock::Get.new post('getStock', args)
+        Response::Stock.new post('getStock', args)
       end
 
       def set(args)
-        Response::Stock::Set.new post('setStock', args)
+        Response::Stock.new post('setStock', args)
       end
     end
   end

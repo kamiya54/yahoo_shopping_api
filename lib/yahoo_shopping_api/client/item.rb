@@ -6,19 +6,19 @@ module YahooShoppingApi
       end
 
       def get(args)
-        Response::Item::Get.new post('getItem', args)
+        Response::Item.new post('getItem', args)
       end
   
       def edit(args)
-        Response::Item::Edit.new post('editItem', args)
+        Response::Item.new post('editItem', args)
       end
   
       def delete(args)
-        Response::Item::Delete.new post('deleteItem', args)
+        Response::Item.new post('deleteItem', args)
       end
   
       def submit(args)
-        Response::Item::Submit.new post('submitItem', args)
+        Response::Item.new post('submitItem', args)
       end
     end
   end
