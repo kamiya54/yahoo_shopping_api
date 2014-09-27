@@ -1,8 +1,8 @@
 # YahooShoppingApi
 
 [![Build Status](https://travis-ci.org/kamiya54/yahoo_shopping_api.svg)](https://travis-ci.org/kamiya54/yahoo_shopping_api)
-
 [![Coverage Status](https://coveralls.io/repos/kamiya54/yahoo_shopping_api/badge.png)](https://coveralls.io/r/kamiya54/yahoo_shopping_api)
+[![Code Climate](https://codeclimate.com/github/kamiya54/yahoo_shopping_api/badges/gpa.svg)](https://codeclimate.com/github/kamiya54/yahoo_shopping_api)
 
 Yahoo!ショッピングのWebAPI用のRubyラッパーgemです。
 
