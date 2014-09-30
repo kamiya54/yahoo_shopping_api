@@ -47,6 +47,18 @@ client = YahooShoppingApi::Client::Stock.new(access_token: 'access_token', selle
     * :white_check_mark: 商品個別反映API (submit)
     * :white_large_square: 商品リストAPI
     * :white_large_square: 商品アップロードAPI
+* 注文に関連するAPI (Order)
+    * :white_check_mark: 注文ステータス別件数参照API
+    * :white_large_square: 注文検索API
+    * :white_large_square: 注文詳細API
+    * :white_large_square: 注文ステータス変更API
+    * :white_large_square: 入金ステータス変更API
+    * :white_large_square: 出荷ステータス変更API
+    * :white_large_square: 注文内容変更API
+    * :white_large_square: 注文操作履歴一覧API
+    * :white_large_square: 注文分割API
+    * :white_large_square: 注文ライン追加API
+    * :white_large_square: 支払番号発行API
 
 ## Contributing
 
