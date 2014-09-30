@@ -12,6 +12,14 @@ describe YSA::Client::Helper do
         expect{request.post('setStock', '')}.to raise_error ::YSA::AuthError
       end
     end
+
+    describe 'with invalid parameters' do
+      let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/setStock"}
+      before {stub_request(:post, endpoint).to_return(:status => 400, body: fixture('invalid_params.xml'))}
+      it '' do
+        expect{request.post('setStock', '')}.to raise_error ::YSA::InvalidParameters
+      end
+    end
   end
 
   describe 'request_body' do

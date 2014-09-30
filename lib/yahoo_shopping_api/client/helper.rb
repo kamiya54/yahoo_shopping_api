@@ -11,8 +11,18 @@ module YahooShoppingApi
 
       def post(method, args)
         request = connection(method).post {|req| req.body = request_body(args)}
-        raise AuthError if request.status == 401
-        return request.body
+        case request.status
+        when 200
+          return request.body
+        when 400
+          raise InvalidParameters, request.body
+        when 401
+          raise AuthError, request.body
+        when 500
+          raise ApiSystemError, request.body
+        when 503
+          raise SystemMaintenance, request.body
+        end
       end
 
       def request_body(args)
