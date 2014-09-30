@@ -8,8 +8,9 @@ require 'yahoo_shopping_api/response'
 YSA = YahooShoppingApi
 
 module YahooShoppingApi
-  class AuthError < StandardError;end
-  class InvalidParameters < StandardError;end
+  class InvalidParameters < StandardError; end
+  class InvalidTokenError < StandardError; end
+  class PermissionError < StandardError; end
   class ApiSystemError < StandardError; end
   class SystemMaintenance < StandardError; end
 end

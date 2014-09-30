@@ -9,7 +9,7 @@ describe YSA::Client::Helper do
       let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/setStock"}
       before {stub_request(:post, endpoint).to_return(:status => 401, body: fixture('timeout.xml'))}
       it '' do
-        expect{request.post('setStock', '')}.to raise_error ::YSA::AuthError
+        expect{request.post('setStock', '')}.to raise_error ::YSA::InvalidTokenError
       end
     end
 

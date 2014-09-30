@@ -10,38 +10,11 @@ module YahooShoppingApi
       end
 
       def get_request(method, args="")
-        request = connection(method).get do |req|
-          req.params[:seller_id] = @seller_id
-          req.params[:item_code] = args if args.present?
-        end
-        case request.status
-        when 200
-          return request.body
-        when 400
-          raise InvalidParameters, request.body
-        when 401
-          raise AuthError, request.body
-        when 500
-          raise ApiSystemError, request.body
-        when 503
-          raise SystemMaintenance, request.body
-        end
+        handler connection(method).get {|req| req.params[:seller_id] = @seller_id; req.params[:item_code] = args if args.present? }
       end
 
       def post(method, args)
-        request = connection(method).post {|req| req.body = request_body(args)}
-        case request.status
-        when 200
-          return request.body
-        when 400
-          raise InvalidParameters, request.body
-        when 401
-          raise AuthError, request.body
-        when 500
-          raise ApiSystemError, request.body
-        when 503
-          raise SystemMaintenance, request.body
-        end
+        handler connection(method).post {|req| req.body = request_body(args)}
       end
 
       def request_body(args)
@@ -59,6 +32,23 @@ module YahooShoppingApi
       end
 
       private
+
+      def handler(request)
+        case request.status
+        when 200
+          return request.body
+        when 400
+          raise InvalidParameters, request.body
+        when 401
+          raise InvalidTokenError, request.body
+        when 403
+          raise PermissionError, request.body
+        when 500
+          raise ApiSystemError, request.body
+        when 503
+          raise SystemMaintenance, request.body
+        end
+      end
 
       def connection(method)
         connection = Faraday.new(:url => Endpoint + method) do |c|
