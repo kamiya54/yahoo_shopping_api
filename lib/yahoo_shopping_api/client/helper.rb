@@ -9,6 +9,22 @@ module YahooShoppingApi
         @seller_id = args[:seller_id]
       end
 
+      def get_request(method, args)
+        request = connection(method).get {|req| req.params[:seller_id] = @seller_id; req.params[:item_code] = args}
+        case request.status
+        when 200
+          return request.body
+        when 400
+          raise InvalidParameters, request.body
+        when 401
+          raise AuthError, request.body
+        when 500
+          raise ApiSystemError, request.body
+        when 503
+          raise SystemMaintenance, request.body
+        end
+      end
+
       def post(method, args)
         request = connection(method).post {|req| req.body = request_body(args)}
         case request.status

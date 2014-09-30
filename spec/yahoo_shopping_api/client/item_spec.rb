@@ -21,8 +21,8 @@ describe YahooShoppingApi::Client::Item do
   end
 
   describe "#get" do
-    let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getItem"}
-    before {stub_request(:post, endpoint).to_return(:status => 200, body: fixture('item/get.xml'))}
+    let(:endpoint) {"https://circus.shopping.yahooapis.jp/ShoppingWebService/V1/getItem?item_code=item_code&seller_id=dummy_seller_id"}
+    before {stub_request(:get, endpoint).to_return(:status => 200, body: fixture('item/get.xml'))}
     subject{client.get('item_code')}
     it {is_expected.to be_a ::YSA::Response::Item}
   end

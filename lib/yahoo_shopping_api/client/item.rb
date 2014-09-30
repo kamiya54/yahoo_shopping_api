@@ -6,7 +6,7 @@ module YahooShoppingApi
       end
 
       def get(args)
-        Response::Item.new post('getItem', args)
+        Response::Item.new get_request('getItem', args)
       end
   
       def edit(args)
