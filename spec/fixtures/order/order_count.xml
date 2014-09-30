@@ -1,0 +1,9 @@
+<ResultSet totalResultsAvailable="1" totalResultsReturned="1" firstResultPosition="1">
+  <Result>
+    <Status>OK</Status>
+    <Count>
+      <NewOrder>27</NewOrder>
+      <NewReserve>4</NewReserve>
+    </Count>
+  </Result>
+</ResultSet>
