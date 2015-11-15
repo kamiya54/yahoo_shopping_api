@@ -1,3 +1,5 @@
+require 'faraday'
+
 module YahooShoppingApi
   module Client
     class Helper
