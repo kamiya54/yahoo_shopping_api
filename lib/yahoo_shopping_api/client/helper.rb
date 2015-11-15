@@ -38,7 +38,7 @@ module YahooShoppingApi
       def handler(request)
         case request.status
         when 200
-          return request.body
+          request.body
         when 400
           raise InvalidParameters, request.body
         when 401
@@ -53,7 +53,7 @@ module YahooShoppingApi
       end
 
       def connection(method)
-        connection = Faraday.new(:url => endpoint + method) do |c|
+        Faraday.new(:url => endpoint + method) do |c|
           c.adapter Faraday.default_adapter
           c.headers['Authorization'] = "Bearer " + access_token
         end
@@ -62,21 +62,21 @@ module YahooShoppingApi
       def array_hash(args)
         str = "seller_id=#{seller_id}"
         args[0].each {|key, value| str << "&#{key}=" + args.collect{|e| e[key.to_sym]}.join(',')}
-        return str
+        str
       end
 
       def hash(args)
         str = "seller_id=#{seller_id}"
         args.each {|key, value| str << "&" + key.to_s + "=" + value.to_s }
-        return str
+        str
       end
 
       def array(args)
-        return "seller_id=#{seller_id}&item_code=#{args.join(",")}"
+        "seller_id=#{seller_id}&item_code=#{args.join(",")}"
       end
 
       def code(args)
-        return "seller_id=#{seller_id}&item_code=#{args}"
+        "seller_id=#{seller_id}&item_code=#{args}"
       end
     end
   end
